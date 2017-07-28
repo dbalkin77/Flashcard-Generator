@@ -1,6 +1,7 @@
-function Close (text, close) {
+function Close (text, cloze, partial) {
     this.text = text;
-    this.close = close
+    this.cloze = cloze;
+    this.partial = partial;
 }
 
 
