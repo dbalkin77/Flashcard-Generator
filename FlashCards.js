@@ -27,6 +27,28 @@ function introduction () {
 
 introduction();
 
-// ====================================================================================
+// Basic Card Input ==================================================
+
+function createBasic () {
+    inquirer.prompt([
+        {
+            name: 'basicFront',
+            message: 'Insert question for front of flash card'
+        },
+        {
+            name: 'basicBack',
+            message: 'Insert answer for back of flash card'
+        }
+    ]).then(function(baiscInput){
+         let newFlashCard = new BasicCard(basicInput.basicFront, basicInput.basicBack);
+        console.log(newFlashCard);
+        // Append input to file to be read later
+        fs.appendFile('allFlashCards.txt', JSON.stringify(newFlashCard), function (err) {
+            if (err) {
+                throw err;
+            }
+        })
+    });
+}
 
 
