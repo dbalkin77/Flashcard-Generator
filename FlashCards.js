@@ -39,11 +39,12 @@ function createBasic () {
             name: 'basicBack',
             message: 'Insert answer for back of flash card'
         }
-    ]).then(function(baiscInput){
-         let newFlashCard = new BasicCard(basicInput.basicFront, basicInput.basicBack);
+    ]).then(function(data){
+        console.log(data);
+         let newFlashCard = new BasicCard(data.basicFront, data.basicBack);
         console.log(newFlashCard);
         // Append input to file to be read later
-        fs.appendFile('allFlashCards.txt', JSON.stringify(newFlashCard), function (err) {
+        fs.appendFile('allFlashCards.txt', newFlashCard, function (err) {
             if (err) {
                 throw err;
             }
