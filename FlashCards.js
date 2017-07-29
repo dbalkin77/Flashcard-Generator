@@ -5,7 +5,7 @@ const ClozeCard = require("./ClozeCard.js");
 
 
 // Function that promops user to either create a basic note card, a cloze note card, or to study created flash cards
-function startQuestions () {
+function introduction () {
     inquirer.prompt([
         {
             type: 'list',
@@ -25,5 +25,8 @@ function startQuestions () {
     })
 }
 
+introduction();
+
+// ====================================================================================
 
 

@@ -1,7 +1,7 @@
-function Close (text, cloze, partial) {
+function ClozeCard (text, cloze, partial) {
     this.text = text;
     this.cloze = cloze;
-    this.partial = partial;
+    this.partial = partial
 }
 
 
