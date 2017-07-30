@@ -11,7 +11,7 @@ function introduction () {
             type: 'list',
             name: 'selection',
             message: 'What type of flashcard would like to create?',
-            choices: ['Basic Flash Card', 'Cloze Flash Card', 'Study Created Cards']
+            choices: ['Basic Flash Card', 'Cloze Flash Card', 'Study Created Card(s)']
         }
     ]).then(function(answer){
         if (answer.selection === 'Basic Flash Card') {
@@ -40,11 +40,9 @@ function createBasic () {
             message: 'Insert answer for back of flash card'
         }
     ]).then(function(data){
-        console.log(data);
          let newFlashCard = new BasicCard(data.basicFront, data.basicBack);
-        console.log(newFlashCard);
         // Append input to file to be read later
-        fs.appendFile('allFlashCards.txt', JSON.stringify(newFlashCard), function (err) {
+        fs.appendFile('allFlashCards.txt', JSON.stringify(newFlashCard) + '\r\n', function (err) {
             if (err) {
                 throw err;
             }
@@ -54,7 +52,6 @@ function createBasic () {
                 type: 'confirm',
                 name: 'confirm',
                 message: 'Do you want to create another basic flash card',
-                default: true
             }
         ]).then(function(data){
             if (data.confirm === true) {
@@ -87,17 +84,39 @@ function createCloze () {
             message: 'Enter original text without cloze stated in previous prompt'
         }
     ]).then(function(data){
-        console.log(data);
         let newClozeCard = new ClozeCard(data.clozeFront, data.clozeOmit, data.partialText);
-        console.log(newClozeCard);
-
-        fs.appendFile('allFlashCards.txt', JSON.stringify(newClozeCard), function (err) {
+        // Append input to file to be read later        
+        fs.appendFile('allFlashCards.txt', JSON.stringify(newClozeCard)+ '\r\n', function (err) {
             if (err) {
                throw err;
              }
         })
+        inquirer.prompt([
+            {
+                type: 'confirm',
+                name: 'confirm',
+                message: 'Do you want to create another cloze flash card',
+            }
+        ]).then(function(data){
+            if (data.confirm === true) {
+                createCloze ();
+            }
+            else {
+                introduction ();
+            }
+        })
     });
-
-
 }
 
+// Study Cards ==================================================
+
+function studyCards () {
+    fs.readFile('allFlashCards.txt', "utf8", function (err, data){
+        if (err) {
+            throw err
+        }
+        else {
+            console.log(data);
+        }
+    })
+}

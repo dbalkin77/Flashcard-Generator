@@ -1,1 +1,6 @@
-[object Object][object Object]{"front":"Who is the best husband?","back":"Doug"}[object Object]{"text":"Doug is the Husband","cloze":"Doug","partial":"is the Husband"}{"front":"y","back":"clear"}{"front":"y","back":"clear"}{"front":"","back":""}{"front":"","back":""}{"front":"","back":"clear"}{"front":"clear","back":"clear"}{"front":"clear","back":"clear"}{"front":"clear","back":"clear"}{"front":"","back":""}{"front":"","back":""}{"front":"yo","back":"yo"}{"front":"George","back":"Washington"}{"front":"","back":""}{"front":"George","back":"Washington"}{"front":"","back":"clear"}{"front":"george","back":"washington"}{"front":"george","back":"washington"}{"front":"georege","back":"washington"}
+{"front":"Who ate the pizza?","back":"I did"}
+{"front":"What is the name of Doug's Dog?","back":"Ralph"}
+{"front":"What is Doug's middle name?","back":"Mahan"}
+{"front":"What is Betsy's favorite food?","back":"Cheese"}
+{"text":"Pizza is Betsy's fav food","cloze":"Pizza","partial":"is Betsy's fav food"}
+{"text":"I am tall","cloze":"tall","partial":"I am"}
