@@ -44,12 +44,60 @@ function createBasic () {
          let newFlashCard = new BasicCard(data.basicFront, data.basicBack);
         console.log(newFlashCard);
         // Append input to file to be read later
-        fs.appendFile('allFlashCards.txt', newFlashCard, function (err) {
+        fs.appendFile('allFlashCards.txt', JSON.stringify(newFlashCard), function (err) {
             if (err) {
                 throw err;
+            }
+        })
+        inquirer.prompt([
+            {
+                type: 'confirm',
+                name: 'confirm',
+                message: 'Do you want to create another basic flash card',
+                default: true
+            }
+        ]).then(function(data){
+            if (data.confirm === true) {
+                createBasic ();
+            }
+            else {
+                introduction ();
             }
         })
     });
 }
 
+// Close Card Input ==================================================
+
+function createCloze () {
+    inquirer.prompt([
+        {
+            type: 'input',
+            name: 'clozeFront',
+            message: 'Enter full text for flashcard'
+        },
+        {
+            type: 'input',
+            name: 'clozeOmit',
+            message: 'Enter words that should be omitted from card for studying purposes'
+        },
+        {
+            type: 'input',
+            name: 'partialText',
+            message: 'Enter original text without cloze stated in previous prompt'
+        }
+    ]).then(function(data){
+        console.log(data);
+        let newClozeCard = new ClozeCard(data.clozeFront, data.clozeOmit, data.partialText);
+        console.log(newClozeCard);
+
+        fs.appendFile('allFlashCards.txt', JSON.stringify(newClozeCard), function (err) {
+            if (err) {
+               throw err;
+             }
+        })
+    });
+
+
+}
 
